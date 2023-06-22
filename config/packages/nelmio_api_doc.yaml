@@ -1,0 +1,118 @@
+nelmio_api_doc:
+    areas: # to filter documented areas
+        default:
+            disable_default_routes: true
+            path_patterns:
+                - ^/api/(?!/doc$) # Accepts routes under /api except /api/doc
+
+    documentation:
+        openapi: 3.0.0
+        info:
+            title: My App
+            description: This is an awesome app!
+            version: 1.0.0
+        components:
+            securitySchemes:
+                Bearer:
+                    type: http
+                    scheme: bearer
+                    bearerFormat: JWT
+        security:
+            - Bearer: [ ]
+
+        paths:
+            /api/login:
+                post:
+                    summary: Login User
+                    description: Get a authentication token for a device.
+                    tags: [ "Authentication" ]
+                    requestBody:
+                        required: true
+                        content:
+                            application/json:
+                                schema:
+                                    type: object
+                                    properties:
+                                        username:
+                                            type: string
+                                            example: "admin@mo2o.com"
+                                        password:
+                                            type: string
+                                            example: "admin"
+                    responses:
+                        '200':
+                            description: successfully authenticated
+                            content:
+                                application/json:
+                                    schema:
+                                        type: object
+                                        properties:
+                                            token:
+                                                type: string
+                                            refresh_token:
+                                                type: string
+                                            refresh_token_expiration:
+                                                type: integer
+                                                example: 1682256602
+                        '401':
+                            description: Invalid credentials
+                            content:
+                                application/json:
+                                    schema:
+                                        type: object
+                                        properties:
+                                            code:
+                                                type: int
+                                            message:
+                                                type: string
+                                    examples:
+                                        invalid_refresh_token:
+                                            summary: Invalid credentials.
+                                            value: { "code": 401, "message": "Invalid credentials." }
+
+            /api/token/refresh:
+                post:
+                    summary: Get a new token by usage of the long living `refresh_token` in a device.
+                    description: This endpoints takes a refresh token to generate a new `token` and return it with the still valid `refresh_token`.
+                    tags: ["Authentication"]
+                    requestBody:
+                        required: true
+                        content:
+                            application/json:
+                                schema:
+                                    type: object
+                                    properties:
+                                        refresh_token:
+                                            type: string
+
+                    responses:
+                        '200':
+                            description: successful token refresh
+                            content:
+                                application/json:
+                                    schema:
+                                        type: object
+                                        properties:
+                                            token:
+                                                type: string
+                                            refresh_token:
+                                                type: string
+                                            refresh_token_expiration:
+                                                type: integer
+                                                example: 1682256602
+                        '401':
+                            description: An authentication exception occurred.
+                            content:
+                                application/json:
+                                    schema:
+                                        type: object
+                                        properties:
+                                            code:
+                                                type: int
+                                            message:
+                                                type: string
+                                    examples:
+                                        invalid_refresh_token:
+                                            summary: Invalid refresh token
+                                            value: { "code": 401, "message": "An authentication exception occurred." }
+

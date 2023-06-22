@@ -1,0 +1,137 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Cannot access offset 'items' on mixed\\.$#"
+			count: 1
+			path: src/Comic/Application/ViewAll/ViewComicsService.php
+
+		-
+			message: "#^Cannot access offset 'total' on mixed\\.$#"
+			count: 1
+			path: src/Comic/Application/ViewAll/ViewComicsService.php
+
+		-
+			message: "#^Parameter \\#1 \\$comics of class App\\\\Comic\\\\Application\\\\ViewAll\\\\ViewComicsResponse constructor expects array, mixed given\\.$#"
+			count: 1
+			path: src/Comic/Application/ViewAll/ViewComicsService.php
+
+		-
+			message: "#^Parameter \\#2 \\$total of class App\\\\Comic\\\\Application\\\\ViewAll\\\\ViewComicsResponse constructor expects int, mixed given\\.$#"
+			count: 1
+			path: src/Comic/Application/ViewAll/ViewComicsService.php
+
+		-
+			message: "#^Class App\\\\Comic\\\\Domain\\\\ComicCollection extends generic class App\\\\Shared\\\\Domain\\\\Collection but does not specify its types\\: T$#"
+			count: 1
+			path: src/Comic/Domain/ComicCollection.php
+
+		-
+			message: "#^Class App\\\\Comic\\\\Domain\\\\ComicCollection has @implements tag, but does not implement any interface\\.$#"
+			count: 1
+			path: src/Comic/Domain/ComicCollection.php
+
+		-
+			message: "#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: src/Comic/Infrastructure/Repository/ComicRepositoryMarvel.php
+
+		-
+			message: "#^Cannot access offset 'data' on mixed\\.$#"
+			count: 1
+			path: src/Comic/Infrastructure/Repository/ComicRepositoryMarvel.php
+
+		-
+			message: "#^Cannot access offset 'id' on mixed\\.$#"
+			count: 1
+			path: src/Comic/Infrastructure/Repository/ComicRepositoryMarvel.php
+
+		-
+			message: "#^Cannot access offset 'results' on mixed\\.$#"
+			count: 1
+			path: src/Comic/Infrastructure/Repository/ComicRepositoryMarvel.php
+
+		-
+			message: "#^Cannot access offset 'title' on mixed\\.$#"
+			count: 1
+			path: src/Comic/Infrastructure/Repository/ComicRepositoryMarvel.php
+
+		-
+			message: "#^Parameter \\#1 \\$id of class App\\\\Comic\\\\Domain\\\\Comic constructor expects int, mixed given\\.$#"
+			count: 1
+			path: src/Comic/Infrastructure/Repository/ComicRepositoryMarvel.php
+
+		-
+			message: "#^Parameter \\#1 \\$json of function json_decode expects string, mixed given\\.$#"
+			count: 1
+			path: src/Comic/Infrastructure/Repository/ComicRepositoryMarvel.php
+
+		-
+			message: "#^Parameter \\#2 \\$title of class App\\\\Comic\\\\Domain\\\\Comic constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Comic/Infrastructure/Repository/ComicRepositoryMarvel.php
+
+		-
+			message: "#^Generator expects value type Symfony\\\\Component\\\\HttpKernel\\\\Bundle\\\\BundleInterface, object given\\.$#"
+			count: 1
+			path: src/Kernel.php
+
+		-
+			message: "#^Method App\\\\Shared\\\\Domain\\\\Collection\\:\\:getIterator\\(\\) return type with generic class ArrayIterator does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Shared/Domain/Collection.php
+
+		-
+			message: "#^PHPDoc tag @return with type array\\<T\\> is incompatible with native type ArrayIterator\\.$#"
+			count: 1
+			path: src/Shared/Domain/Collection.php
+
+		-
+			message: "#^Class App\\\\Shared\\\\Domain\\\\Criteria\\\\Filters extends generic class App\\\\Shared\\\\Domain\\\\Collection but does not specify its types\\: T$#"
+			count: 1
+			path: src/Shared/Domain/Criteria/Filters.php
+
+		-
+			message: "#^Method App\\\\Shared\\\\Infrastructure\\\\Guzzle\\\\GuzzleMiddleware\\:\\:arrayIntersectAssocRecursive\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Shared/Infrastructure/Guzzle/GuzzleMiddleware.php
+
+		-
+			message: "#^Method App\\\\Shared\\\\Infrastructure\\\\Guzzle\\\\GuzzleMiddleware\\:\\:arrayIntersectAssocRecursive\\(\\) has parameter \\$arr1 with no type specified\\.$#"
+			count: 1
+			path: src/Shared/Infrastructure/Guzzle/GuzzleMiddleware.php
+
+		-
+			message: "#^Method App\\\\Shared\\\\Infrastructure\\\\Guzzle\\\\GuzzleMiddleware\\:\\:arrayIntersectAssocRecursive\\(\\) has parameter \\$arr2 with no type specified\\.$#"
+			count: 1
+			path: src/Shared/Infrastructure/Guzzle/GuzzleMiddleware.php
+
+		-
+			message: "#^Parameter \\#1 \\$request of method GuzzleHttp\\\\MessageFormatter\\:\\:format\\(\\) expects Psr\\\\Http\\\\Message\\\\RequestInterface, Psr\\\\Http\\\\Message\\\\MessageInterface given\\.$#"
+			count: 1
+			path: src/Shared/Infrastructure/Guzzle/GuzzleMiddleware.php
+
+		-
+			message: "#^Parameter \\#1 \\$resource of static method GuzzleHttp\\\\Psr7\\\\Utils\\:\\:streamFor\\(\\) expects bool\\|\\(callable\\(\\)\\: mixed\\)\\|float\\|int\\|Iterator\\|Psr\\\\Http\\\\Message\\\\StreamInterface\\|resource\\|string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Shared/Infrastructure/Guzzle/GuzzleMiddleware.php
+
+		-
+			message: "#^Parameter \\#2 \\$response of method GuzzleHttp\\\\MessageFormatter\\:\\:format\\(\\) expects Psr\\\\Http\\\\Message\\\\ResponseInterface\\|null, Psr\\\\Http\\\\Message\\\\MessageInterface given\\.$#"
+			count: 1
+			path: src/Shared/Infrastructure/Guzzle/GuzzleMiddleware.php
+
+		-
+			message: "#^Parameter \\#2 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, mixed given\\.$#"
+			count: 3
+			path: src/Shared/Infrastructure/Guzzle/GuzzleMiddleware.php
+
+		-
+			message: "#^Cannot call method validate\\(\\) on mixed\\.$#"
+			count: 1
+			path: src/Shared/Infrastructure/Symfony/Controller/AbstractApiController.php
+
+		-
+			message: "#^Service \"domain_validator\" is not registered in the container\\.$#"
+			count: 1
+			path: src/Shared/Infrastructure/Symfony/Controller/AbstractApiController.php
+

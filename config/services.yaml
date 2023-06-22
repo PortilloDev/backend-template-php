@@ -1,0 +1,39 @@
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    _instanceof:
+        App\Shared\Domain\Bus\HandlerInterface:
+            tags: ['messenger.message_handler']
+
+    # Services
+    App\:
+        resource: '../src/'
+
+    monolog.newline_formatter:
+        class: Monolog\Formatter\LineFormatter
+        arguments:
+            - null
+            - 'Y-m-d H:i:s'
+            - true
+
+    monolog.processor.web:
+        class: Monolog\Processor\WebProcessor
+        tags:
+            - { name: monolog.processor }
+
+    monolog.processor.tag:
+        class: Monolog\Processor\TagProcessor
+        arguments:
+            - { env: '%env(APP_ENV)%', node: '%env(SERVER_ADDR)%' }
+        tags:
+            - { name: monolog.processor }
+
+    # Alias
+    App\Comic\Domain\Contracts\ComicStoreInterface: '@App\Comic\Infrastructure\Rest\CacheComicStore'

@@ -1,0 +1,54 @@
+version: "3.4"
+
+services:
+  app:
+    image: backend-template-app
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    volumes:
+      - ./sonar-reports:/var/www/html/sonar-reports
+    env_file:
+      - .env.test
+    depends_on:
+      redis:
+        condition: service_started
+      wait4x:
+        condition: service_completed_successfully
+    environment:
+      DATABASE_URL: "mysql://app:!ChangeMe!@database:3306/app?serverVersion=8&charset=utf8mb4"
+      REDIS_URL: "redis://redis:6379"
+
+  nginx:
+    # versión
+    image: nginx:latest
+    # Puerto 8080
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - app
+
+  database:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD:-!ChangeMe!}
+      MYSQL_DATABASE: ${MYSQL_DB:-app}
+      # You should definitely change the password in production
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-!ChangeMe!}
+      MYSQL_USER: ${MYSQL_USER:-app}
+
+  redis:
+    image: redis:7.0.10
+    ports:
+      - "6379:6379"
+    command: redis-server
+
+  wait4x:
+    image: atkrad/wait4x
+    depends_on:
+      - database
+    command: tcp database:3306 -t 30s -i 250ms

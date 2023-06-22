@@ -1,0 +1,21 @@
+api_comic:
+  resource: ../src/Comic/Infrastructure/Symfony/Controller/
+  type: annotation
+  prefix: '/api'
+
+api_user:
+  resource: ../src/User/Infrastructure/Symfony/Controller/
+  type: annotation
+  prefix: '/api'
+
+api_shared:
+  resource: ../src/Shared/Infrastructure/Symfony/Controller/
+  type: annotation
+  prefix: '/api'
+
+api_login_check:
+  path: /api/login
+
+api_refresh_token:
+  path: /api/token/refresh
+  methods: POST

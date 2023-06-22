@@ -1,0 +1,6 @@
+framework:
+    annotations: true
+    assets:
+        packages:
+            img:
+                base_urls: '%env(APP_WS_DOMAIN)%'

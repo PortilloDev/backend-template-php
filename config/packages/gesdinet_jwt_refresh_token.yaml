@@ -1,0 +1,7 @@
+gesdinet_jwt_refresh_token:
+    refresh_token_class: App\User\Infrastructure\Symfony\Security\RefreshToken
+    ttl: 2592000
+    ttl_update: true
+    single_use: true
+    return_expiration: true
+

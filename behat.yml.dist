@@ -1,0 +1,31 @@
+default:
+    suites:
+        default:
+            contexts:
+                - App\Tests\Behat\Context\SecurityContext
+                - App\Tests\Behat\Context\MessengerContext
+                - Behat\MinkExtension\Context\MinkContext
+                - behatch:context:rest
+                - behatch:context:json
+
+    extensions:
+        FriendsOfBehat\SymfonyExtension:
+        Behatch\Extension: ~
+        Behat\MinkExtension:
+          base_url: 'http://example.com/'
+          files_path: 'features'
+          sessions:
+            default:
+              symfony: ~
+        DVDoug\Behat\CodeCoverage\Extension:
+            filter:
+                include:
+                    directories:
+                        'src': ~
+            reports:
+                text:
+                    showColors: true
+                    showOnlySummary: true
+                clover:
+                    target: 'sonar-reports/coverage-behat.xml'
+                    name: ''
